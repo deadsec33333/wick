@@ -1,0 +1,11 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import Home from './app/page';
+import How from './app/how-it-works/page';
+import Transparency from './app/transparency/page';
+import { brand } from './lib/simulation/config.mjs';
+import './app/globals.css';
+document.title = `${brand.name} — ${brand.tagline}`;
+const path = window.location.pathname.replace(/\/$/, '');
+const Page = path === '/how-it-works' ? How : path === '/transparency' ? Transparency : Home;
+createRoot(document.getElementById('root')!).render(<Page/>);
